@@ -11,6 +11,9 @@
 @section('content')
 <main>
     <div class="container">
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
         <h1 class="title-text">会員登録</h1>
         <form action="{{ route("login") }}" method="POST">
                 @csrf
