@@ -57,4 +57,13 @@ class User extends Authenticatable
 
         return $user;
     }
+
+    public static function createAdminUser($email, $password)
+    {
+        User::create([
+            "email" => $email,
+            "password" => $password,
+            "is_admin" => true,
+        ]);
+    }
 }

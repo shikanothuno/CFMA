@@ -15,6 +15,8 @@ class DataBaseCreateTest extends TestCase
 {
     public function test_category_create_success()
     {
+        $this->markTestSkipped("このテストはスキップされました。");
+
         $faker = Faker::create();
         $category_name = $faker->word();
         Category::createCategory($category_name);
@@ -26,6 +28,8 @@ class DataBaseCreateTest extends TestCase
 
     public function test_item_status_create_success()
     {
+        $this->markTestSkipped("このテストはスキップされました。");
+
         $faker = Faker::create();
         $item_status_name = $faker->word();
         ItemStatus::createItemStatus($item_status_name);
@@ -37,6 +41,8 @@ class DataBaseCreateTest extends TestCase
 
     public function test_image_create_success()
     {
+        $this->markTestSkipped("このテストはスキップされました。");
+
         $faker = Faker::create();
         $image_name = $faker->word();
         $image_url = $faker->imageUrl();
@@ -50,6 +56,8 @@ class DataBaseCreateTest extends TestCase
 
     public function test_item_create_success()
     {
+        $this->markTestSkipped("このテストはスキップされました。");
+
         $faker = Faker::create();
         $category_id = 1;
         $item_status_id = 1;

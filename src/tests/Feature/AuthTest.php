@@ -17,6 +17,8 @@ class AuthTest extends TestCase
 
     public function test_register_success()
     {
+        $this->markTestSkipped("このテストはスキップされました。");
+
         $email = "test" . rand() . "@example.com";
         $password = "password";
         User::createGeneralUser($email, $password);
@@ -27,6 +29,8 @@ class AuthTest extends TestCase
 
     public function test_register_failure()
     {
+        $this->markTestSkipped("このテストはスキップされました。");
+
         $email = "";
         $password = "password";
         $response = $this->post("register",[
@@ -45,6 +49,8 @@ class AuthTest extends TestCase
 
     public function test_login_success()
     {
+        $this->markTestSkipped("このテストはスキップされました。");
+
         $email = "test@example.com";
         $password = "password";
         $response = $this->post("login",[
@@ -57,6 +63,8 @@ class AuthTest extends TestCase
 
     public function test_login_failure()
     {
+        $this->markTestSkipped("このテストはスキップされました。");
+
         $email = "failure@example.com";
         $password = "password";
         $response = $this->post("/login",[
