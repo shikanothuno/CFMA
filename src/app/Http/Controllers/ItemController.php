@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use Illuminate\Http\Request;
 
-class ItemListController extends Controller
+class ItemController extends Controller
 {
     public function showItemList(Request $request)
     {
@@ -17,5 +17,15 @@ class ItemListController extends Controller
         $items = $query->get()->all();
 
         return view("item-list",compact("items"));
+    }
+
+    public function showMylist()
+    {
+        return view("mylist");
+    }
+
+    public function showItemDetail(Request $request, Item $item)
+    {
+        return view("item-detail",compact("item"));
     }
 }
