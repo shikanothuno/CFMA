@@ -1,18 +1,7 @@
-@extends('layouts/layout-base')
+<x-layout title="商品詳細" css="css/item-detail.css">
+    <main>
+        <div class="container">
 
-@section('title')
-    商品詳細
-@endsection
-
-@section('css')
-<link rel="stylesheet" href="{{ asset("css/item-detail.css") }}">
-@endsection
-
-@section('content')
-<main>
-    <div class="container">
-
-    </div>
-</main>
-@endsection
-
+        </div>
+    </main>
+</x-layout>
