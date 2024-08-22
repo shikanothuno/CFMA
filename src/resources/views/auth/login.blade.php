@@ -19,12 +19,12 @@
                 @csrf
                 <div class="input-form">
                     <label class="label" for="email">メールアドレス</label>
-                    <input class="input" id="email" type="email">
+                    <input class="input" name="email" id="email" type="email">
                 </div>
 
                 <div class="input-form">
                     <label class="label" for="password">パスワード</label>
-                    <input class="input" id="password" type="password">
+                    <input class="input" name="password" id="password" type="password">
                 </div>
 
                 <button class="submit-button" type="submit">ログインする</button>
