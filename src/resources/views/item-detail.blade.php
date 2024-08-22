@@ -11,8 +11,13 @@
                 <div class="favorite-and-comment">
                     <table>
                         <tr>
-                            <td class="favorite-and-comment__td"><a href=""><img class="icon" 
+                            <td class="favorite-and-comment__td"><a href=""
+                            onclick="event.preventDefault();
+                            document.getElementById('toggle-favorite-form').submit()"><img class="icon" 
                             src="{{ asset("images/favorite.png") }}" alt=""></a></td>
+                            <form id="toggle-favorite-form" method="POST" 
+                            action="{{ route('toggle.favorite',$item) }}"
+                            style="display: none;">@csrf</form>
                             <td class="favorite-and-comment__td"><a href=""><img class="icon" 
                             src="{{ asset("images/comment.png") }}" alt=""></a></td>
                         </tr>

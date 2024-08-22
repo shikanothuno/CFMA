@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,10 @@ Route::controller(ItemController::class)->group(function(){
     Route::get("/mylist","showMylist")->name("items.mylist");
     Route::get("/{item}/detail","showItemDetail")->name("item.detail");
     Route::get("/{item}/purchase","showPurchaseItem")->name("item.purchase");
+});
+
+Route::controller(FavoriteController::class)->middleware("auth")->group(function(){
+    Route::post("/{item}/toggle-favorite", "toggleFavorite")->name("toggle.favorite");
 });
 
 require __DIR__.'/auth.php';

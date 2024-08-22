@@ -9,7 +9,7 @@
             <div class="black-line"></div>
             <div class="item-cards">
                 @foreach ($items as $item)
-                <a class="item-detail-link" href="{{ route("item.detail", $item->id) }}">
+                <a class="item-detail-link" href="{{ route("item.detail", $item) }}">
                     <img class="item-img" src="{{ asset($item->image->image_url) }}" alt=""></a>
                 @endforeach
             </div>
