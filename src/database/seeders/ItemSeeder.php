@@ -14,7 +14,7 @@ class ItemSeeder extends Seeder
     public function run(): void
     {
         for($i = 0;$i < 100;$i++){
-            Item::createItem(1,1,"テスト商品","テストブランド","テスト商品です。",4500,1);
+            Item::createItem(1,"テスト商品","テストブランド","テスト商品です。",4500,1,[1,2,3]);
         }
     }
 }

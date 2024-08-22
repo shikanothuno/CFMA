@@ -28,4 +28,9 @@ class ItemController extends Controller
     {
         return view("item-detail",compact("item"));
     }
+
+    public function showPurchaseItem(Request $request, Item $item)
+    {
+        return view("item-purchase",compact("item"));
+    }
 }

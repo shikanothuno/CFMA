@@ -3,6 +3,8 @@
 namespace Tests\Feature;
 
 use App\Models\Category;
+use App\Models\Comment;
+use App\Models\Favorite;
 use App\Models\Image;
 use App\Models\Item;
 use App\Models\ItemStatus;
@@ -59,18 +61,17 @@ class DataBaseCreateTest extends TestCase
         $this->markTestSkipped("このテストはスキップされました。");
 
         $faker = Faker::create();
-        $category_id = 1;
         $item_status_id = 1;
         $item_name = $faker->word();
         $item_brand_name = $faker->word();
         $item_description = $faker->realText();
         $item_price = $faker->randomNumber();
         $image_id = 1;
-        Item::createItem($category_id,$item_status_id,$item_name,
-        $item_brand_name,$item_description,$item_price,$image_id);
+        $cateogry_ids = [1,2,3];
+        Item::createItem($item_status_id,$item_name,
+        $item_brand_name,$item_description,$item_price,$image_id,$cateogry_ids);
 
         $this->assertDatabaseHas("items",[
-            "category_id" =>$category_id,
             "item_status_id" => $item_status_id,
             "item_name" => $item_name,
             "item_brand_name" => $item_brand_name,
@@ -79,5 +80,27 @@ class DataBaseCreateTest extends TestCase
             "image_id" => $image_id,
         ]);
 
+    }
+
+    public function test_favorite_create_success()
+    {
+        Favorite::createFavorite(1, 1);
+
+        $this->assertDatabaseHas("favorites",[
+            "user_id" => 1,
+            "item_id" => 1,
+        ]);
+    }
+
+    public function test_comment_create_success()
+    {
+        $text = "コメント";
+        Comment::createComment(1, 1, $text);
+
+        $this->assertDatabaseHas("comments",[
+            "item_id" => 1,
+            "user_id" => 1,
+            "comment_body" => $text,
+        ]);
     }
 }

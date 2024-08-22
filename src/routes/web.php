@@ -18,6 +18,7 @@ Route::controller(ItemController::class)->group(function(){
     Route::get("/","showItemList")->name("items.list");
     Route::get("/mylist","showMylist")->name("items.mylist");
     Route::get("/{item}/detail","showItemDetail")->name("item.detail");
+    Route::get("/{item}/purchase","showPurchaseItem")->name("item.purchase");
 });
 
 require __DIR__.'/auth.php';

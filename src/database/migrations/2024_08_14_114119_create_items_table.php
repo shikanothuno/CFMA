@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("category_id")->constrained();
             $table->foreignId("item_status_id")->constrained();
             $table->string("item_name");
             $table->string("item_brand_name");

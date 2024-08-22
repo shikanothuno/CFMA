@@ -10,7 +10,6 @@ class Item extends Model
     use HasFactory;
 
     protected $fillable = [
-        "category_id",
         "item_status_id",
         "item_name",
         "item_brand_name",
@@ -19,9 +18,9 @@ class Item extends Model
         "image_id",
     ];
 
-    public function category()
+    public function categories()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsToMany(Category::class);
     }
 
     public function item_status()
@@ -34,10 +33,21 @@ class Item extends Model
         return $this->belongsTo(Image::class);
     }
 
-    public static function createItem($category_id, $item_status_id, $item_name, $item_brand_name, $item_description, $item_price, $image_id)
+    public function favorites()
     {
-        Item::create([
-            "category_id" => $category_id,
+        return $this->belongsToMany(User::class, "favorites");
+    }
+
+    public function comments()
+    {
+        return $this->belongsToMany(User::class, "comments")->withPivot("comment_body");
+    }
+
+
+    public static function createItem($item_status_id, $item_name, $item_brand_name,
+    $item_description, $item_price, $image_id, $category_ids)
+    {
+        $item = Item::create([
             "item_status_id" => $item_status_id,
             "item_name" => $item_name,
             "item_brand_name" => $item_brand_name,
@@ -45,5 +55,7 @@ class Item extends Model
             "item_price" => $item_price,
             "image_id" => $image_id,
         ]);
+
+        $item->categories()->attach($category_ids);
     }
 }

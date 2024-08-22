@@ -47,6 +47,16 @@ class User extends Authenticatable
         ];
     }
 
+    public function favorites()
+    {
+        return $this->belongsToMany(Item::class, "favorites");
+    }
+
+    public function comments()
+    {
+        return $this->belongsToMany(Item::class, "comments")->withPivot("comment_body");
+    }
+
     public static function createGeneralUser($email, $password)
     {
         $user = User::create([
