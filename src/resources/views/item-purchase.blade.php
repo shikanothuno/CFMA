@@ -11,7 +11,7 @@
                 </div>
                 <div class="shipping-address">
                     <h4 class="title">配送先</h4>
-                    <a class="link" href="">変更する</a>
+                    <a class="link" href="{{ route('address.update.show') }}">変更する</a>
                 </div>
             </div>
             <div class="purchase-detail-card">

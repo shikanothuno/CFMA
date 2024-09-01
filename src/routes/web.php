@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddressUpdateController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
@@ -24,6 +25,11 @@ Route::controller(ItemController::class)->group(function(){
 
 Route::controller(FavoriteController::class)->middleware("auth")->group(function(){
     Route::post("/{item}/toggle-favorite", "toggleFavorite")->name("toggle.favorite");
+});
+
+Route::controller(AddressUpdateController::class)->middleware("auth")->group(function() {
+    Route::get("/update-address","showAddressUpdateView")->name("address.update.show");
+    Route::put("/update-address","addressChangeStore")->name("address.update.store");
 });
 
 require __DIR__.'/auth.php';

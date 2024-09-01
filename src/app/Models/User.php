@@ -22,6 +22,10 @@ class User extends Authenticatable
         'email',
         'password',
         'is_admin',
+        "user_zip_code",
+        "user_address",
+        "user_building_name",
+        "image_id",
     ];
 
     /**
@@ -57,6 +61,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Item::class, "comments")->withPivot("comment_body");
     }
 
+    public function image()
+    {
+        return $this->belongsTo(Image::class);
+    }
+
     public static function createGeneralUser($email, $password)
     {
         $user = User::create([
@@ -75,5 +84,14 @@ class User extends Authenticatable
             "password" => $password,
             "is_admin" => true,
         ]);
+    }
+
+    public static function updateUserAddress($user, $zip_code, $address, $building_name)
+    {
+        $user->user_zip_code = $zip_code;
+        $user->user_address = $address;
+        $user->user_building_name = $building_name;
+        
+        $user->save();
     }
 }

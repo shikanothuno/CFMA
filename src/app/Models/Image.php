@@ -19,6 +19,11 @@ class Image extends Model
         return $this->hasMany(Item::class);
     }
 
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+
     public static function createImage($image_name, $image_url)
     {
         Image::create([
