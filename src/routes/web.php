@@ -19,7 +19,7 @@ Route::controller(ItemController::class)->group(function(){
     Route::get("/","showItemList")->name("items.list");
     Route::get("/mylist","showMylist")->name("items.mylist");
     Route::get("/{item}/detail","showItemDetail")->name("item.detail");
-    Route::get("/{item}/purchase","showPurchaseItem")->name("item.purchase");
+    Route::get("/{item}/purchase","showPurchaseItem")->middleware("auth")->name("item.purchase");
 });
 
 Route::controller(FavoriteController::class)->middleware("auth")->group(function(){
