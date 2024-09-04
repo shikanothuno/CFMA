@@ -14,6 +14,23 @@
     <body>
         <header class="header">
             <img class="logo" src="{{ asset("/images/logo.svg") }}" alt="">
+            <form id="search-form" action="{{ route('items.list') }}">
+                <input class="search-input" name="keyword" type="text" onchange="document.getElementById('search-form').submit()" placeholder="何をお探しですか?">
+            </form>
+            @auth
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="logout-button">
+                        ログアウト
+                    </button>
+                </form>
+                <a class="header-link" href="">マイページ</a>
+            @endauth
+            @guest
+                <a class="header-link" href="{{route('login')}}">ログイン</a>
+                <a class="header-link" href="{{route('register')}}">会員登録</a>
+            @endguest
+            <a class="listing" href="">出品</a>
         </header>
         {{ $slot }}
     </body>

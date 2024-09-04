@@ -1,4 +1,4 @@
-<x-layout title="住所の変更" css="css/address-update.css">
+<x-plane-layout title="住所の変更" css="css/address-update.css">
     <main>
         <div class="container">
             <h2 class="title">住所の変更</h2>
@@ -20,4 +20,4 @@
             </div>
         </div>
     </main>
-</x-layout>
+</x-plane-layout>

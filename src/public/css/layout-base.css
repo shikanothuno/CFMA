@@ -1,5 +1,6 @@
 .header {
     background-color: black;
+    display: flex;
     height: 80px;
     margin: 0;
     padding: 0;
@@ -7,6 +8,139 @@
 }
 
 .logo {
+    height: 60px;
     padding-left: 20px;
-    padding-top: 25px;
+    padding-top: 10px;
+}
+
+.search-input {
+    height: 60px;
+    margin-top: 10px;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    width: 20vw;
+}
+
+.logout-button {
+    background-color: black;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    text-decoration: none;
+    margin: auto 0;
+    margin-right: 50px;
+    padding-top: 15px;
+}
+
+.header-link {
+    color: white;
+    font-size: 2rem;
+    text-decoration: none;
+    margin: auto 0;
+    margin-right: 50px;
+}
+
+.listing {
+    background-color: white;
+    border-radius: 5px;
+    color: black;
+    font-size: 2rem;
+    height: 60px;
+    line-height: 60px;
+    margin: auto 0;
+    text-align: center;
+    text-decoration: none;
+    width: 100px;
+}
+
+@media (max-width: 1730px) {
+    .search-input {
+        margin-left: 10vw;
+        margin-right: 10vw;
+    }
+
+    .logout-button {
+        font-size: 1.5rem;
+        padding-top: 24px;
+    }
+
+    .header-link {
+        font-size: 1.5rem;
+    }
+
+    .listing {
+        font-size: 1.5rem;
+        width: 80px;
+    }
+}
+
+@media (max-width: 1550px) {
+    .search-input {
+        margin-left: 5vw;
+        margin-right: 5vw;
+    }
+    
+    .logout-button {
+        font-size: 1.2rem;
+    }
+
+    .header-link {
+        font-size: 1.2rem;
+    }
+
+    .listing {
+        font-size: 1.2rem;
+        width: 80px;
+    }
+}
+
+@media (max-width: 1286px) {
+    .search-input {
+        margin-left: 2vw;
+        margin-right: 2vw;
+    }
+
+    .logout-button {
+        font-size: 1rem;
+        margin-right: 10px;
+        padding-top: 27px;
+    }
+
+    .header-link {
+        font-size: 1rem;
+        margin-right: 10px;
+    }
+
+    .listing {
+        font-size: 1rem;
+        width: 60px;
+    }
+}
+
+@media (max-width: 1038px) {
+    .logo {
+        width: 200px;
+    }
+}
+
+@media (max-width: 624px) {
+    .logo {
+        width: 200px;
+    }
+
+    .logout-button {
+        font-size: 0.75rem;
+        margin-right: 5px;
+        padding-top: 30px;
+    }
+
+    .header-link {
+        font-size: 0.75rem;
+        margin-right: 5px;
+    }
+
+    .listing {
+        font-size: 0.75;
+        width: 40px;
+    }
 }
