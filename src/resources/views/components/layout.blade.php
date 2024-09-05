@@ -24,7 +24,7 @@
                         ログアウト
                     </button>
                 </form>
-                <a class="header-link" href="">マイページ</a>
+                <a class="header-link" href="{{ route('mypage.listing') }}">マイページ</a>
             @endauth
             @guest
                 <a class="header-link" href="{{route('login')}}">ログイン</a>

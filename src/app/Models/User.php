@@ -66,6 +66,16 @@ class User extends Authenticatable
         return $this->belongsTo(Image::class);
     }
 
+    public function listing_items()
+    {
+        return $this->hasMany(Item::class, "listing_user");
+    }
+
+    public function purchase_items()
+    {
+        return $this->hasMany(Item::class, "purchase_user");
+    }
+
     public static function createGeneralUser($email, $password)
     {
         $user = User::create([
