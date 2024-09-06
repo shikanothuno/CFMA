@@ -6,7 +6,7 @@
                     <img class="thumbnail" src="{{ is_null(Auth::user()->image) ? asset('images/default.png') : asset(Auth::user()->image->image_url)}}" alt="">
                     <h3 class="name">{{ is_null(Auth::user()->name) ? "anonymous" : Auth::user()->name }}</h3>
                 </div>
-                <a class="profile-link" href="">プロフィールを編集</a>
+                <a class="profile-link" href="{{ route('profile.setting.view') }}">プロフィールを編集</a>
            </div>
            <div class="listing-and-purchase">
                 @if ($is_listing)

@@ -26,9 +26,11 @@ class Image extends Model
 
     public static function createImage($image_name, $image_url)
     {
-        Image::create([
+        $image = Image::create([
             "image_name" => $image_name,
             "image_url" => $image_url,
         ]);
+
+        return $image;
     }
 }

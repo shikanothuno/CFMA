@@ -5,8 +5,12 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\File;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use PhpParser\Node\Stmt\Catch_;
 
 class User extends Authenticatable
 {
@@ -101,6 +105,27 @@ class User extends Authenticatable
         $user->user_zip_code = $zip_code;
         $user->user_address = $address;
         $user->user_building_name = $building_name;
+        
+        $user->save();
+    }
+
+    public static function profileSetting($user, $user_name, $zip_code, $address, $building_name, $image_file)
+    {
+        $user->updateUserAddress($user, $zip_code, $address, $building_name);
+        $user->name = $user_name;
+        if(!is_null($image_file)){
+            $extension = $image_file->extension();
+
+            $file_name = date("Ymd_His") . "." . $extension;
+            $path = Storage::disk("s3")->putFileAs("images", $image_file, $file_name);
+            
+            
+            $url = Storage::disk("s3")->url($path);
+
+            $image = Image::createImage($path, $url);
+
+            $user->image_id = $image->id;
+        }
         
         $user->save();
     }

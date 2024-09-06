@@ -5,6 +5,7 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfileSettingController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', function () {
@@ -34,8 +35,13 @@ Route::controller(AddressUpdateController::class)->middleware("auth")->group(fun
 });
 
 Route::controller(MypageController::class)->middleware("auth")->group(function () {
-    Route::get("mypage/listing-item","showMypageListing")->name("mypage.listing");
-    Route::get("mypage/purchase-item","showMypagePurchase")->name("mypage.purchase");
+    Route::get("/mypage/listing-item","showMypageListing")->name("mypage.listing");
+    Route::get("/mypage/purchase-item","showMypagePurchase")->name("mypage.purchase");
+});
+
+Route::controller(ProfileSettingController::class)->middleware("auth")->group(function () {
+    Route::get("/profile-setting", "profileSettingView")->name("profile.setting.view");
+    Route::post("/profile-setting/update", "profileSettingUpdate")->name("profile.setting.update");
 });
 
 require __DIR__.'/auth.php';
