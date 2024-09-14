@@ -2,9 +2,9 @@
     <main>
         <div class="container">
             <h2 class="title">プロフィール設定</h2>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
             <form class="input-form" action="{{ route('profile.setting.update') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="thumbnail-and-uplode-image">

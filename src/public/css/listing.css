@@ -1,0 +1,112 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 50vw;
+}
+
+.title {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.input-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-item-image {
+    font-size: 1.5rem;
+}
+
+.border-item-image {
+    align-items: center;
+    border: 1px #5F5F5F solid;
+    border-radius: 5px;
+    display: flex;
+    height: 150px;
+    justify-content: center;
+    width: 100%;
+}
+
+.upload-button {
+    border: 1px #FF5555 solid;
+    border-radius: 5px;
+    color: #FF5555;
+    font-size: 1.5rem;
+    font-weight: bold;
+    height: 60px;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.image-upload {
+    display: none;
+}
+
+.text-item-detail {
+    font-size: 1.5rem;
+    margin-bottom: 0px;
+}
+
+.bar {
+    border: 1px #5F5F5F solid;
+    margin-bottom: 50px;
+}
+
+.label {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.select {
+    height: 45px;
+    margin-bottom: 50px;
+}
+
+.text-item-name-and-descrption {
+    font-size: 1.5rem;
+    margin-bottom: 0px;
+}
+
+.input {
+    font-size: 1.5rem;
+    height: 45px;
+    margin-bottom: 50px;
+}
+
+.textarea {
+    font-size: 1.5rem;
+    height: 125px;
+    margin-bottom: 50px;
+}
+
+.text-sales-price {
+    font-size: 1.5rem;
+    margin-bottom: 0px;
+}
+
+.symbol {
+    position: absolute;
+    left: 5px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.input-price {
+    background-image: url("/images/yen-symbol.png");
+    background-repeat: no-repeat;
+    background-position: left 5px center;
+    padding-left: 45px;
+}
+
+.listing-button {
+    background-color: #FF5555;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.5rem;
+    height: 60px;
+    margin-bottom: 50px;
+}

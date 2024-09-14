@@ -3,13 +3,14 @@
 use App\Http\Controllers\AddressUpdateController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ListingController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfileSettingController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::get('/', function () {
+    Route::get("/","showItemList")->name("items.list");
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -42,6 +43,11 @@ Route::controller(MypageController::class)->middleware("auth")->group(function (
 Route::controller(ProfileSettingController::class)->middleware("auth")->group(function () {
     Route::get("/profile-setting", "profileSettingView")->name("profile.setting.view");
     Route::post("/profile-setting/update", "profileSettingUpdate")->name("profile.setting.update");
+});
+
+Route::controller(ListingController::class)->middleware("auth")->group(function () {
+    Route::get("/listing-item", "showListingView")->name("listing.item.view");
+    Route::post("/listing-item/store", "storeListingItem")->name("listing.item.store");
 });
 
 require __DIR__.'/auth.php';

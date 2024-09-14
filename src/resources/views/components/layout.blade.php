@@ -27,10 +27,10 @@
                 <a class="header-link" href="{{ route('mypage.listing') }}">マイページ</a>
             @endauth
             @guest
-                <a class="header-link" href="{{route('login')}}">ログイン</a>
-                <a class="header-link" href="{{route('register')}}">会員登録</a>
+                <a class="header-link" href="{{ route('login') }}">ログイン</a>
+                <a class="header-link" href="{{ route('register') }}">会員登録</a>
             @endguest
-            <a class="listing" href="">出品</a>
+            <a class="listing" href="{{ route('listing.item.view') }}">出品</a>
         </header>
         {{ $slot }}
     </body>

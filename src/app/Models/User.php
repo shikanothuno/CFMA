@@ -114,15 +114,7 @@ class User extends Authenticatable
         $user->updateUserAddress($user, $zip_code, $address, $building_name);
         $user->name = $user_name;
         if(!is_null($image_file)){
-            $extension = $image_file->extension();
-
-            $file_name = date("Ymd_His") . "." . $extension;
-            $path = Storage::disk("s3")->putFileAs("images", $image_file, $file_name);
-            
-            
-            $url = Storage::disk("s3")->url($path);
-
-            $image = Image::createImage($path, $url);
+            $image = Image::storeImage($image_file);
 
             $user->image_id = $image->id;
         }
