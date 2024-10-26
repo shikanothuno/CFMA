@@ -6,6 +6,7 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\MypageController;
+use App\Http\Controllers\PaymentMethodChangeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfileSettingController;
 use Illuminate\Support\Facades\Route;
@@ -55,6 +56,11 @@ Route::controller(CommentController::class)->middleware("auth")->group(function 
     Route::get("/{item}/comment","showCommentView")->name("comment.view");
     Route::post("/{item}/comment","storeComment")->name("comment.store");
 
+});
+
+Route::controller(PaymentMethodChangeController::class)->middleware("auth")->group(function(){
+    Route::get("/{user}/payment-method-change", "paymentMethodChange")->name("payment.method.change");
+    Route::post("/{user}/payment-method-change", "paymentMethodChangeStore")->name("payment.method.store");
 });
 
 require __DIR__.'/auth.php';

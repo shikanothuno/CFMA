@@ -7,7 +7,7 @@
                 <p class="item-price">{{ "￥" . number_format($item->item_price) }}</p>
                 <div class="payment-method">
                     <h4 class="title">支払方法</h4>
-                    <a class="link" href="">変更する</a>
+                    <a class="link" href="{{ route('payment.method.change', Auth::user()) }}">変更する</a>
                 </div>
                 <div class="shipping-address">
                     <h4 class="title">配送先</h4>
@@ -30,7 +30,17 @@
                     </tr>
                     <tr>
                         <th>支払方法</th>
-                        <th></th>
+                        <th>
+                            @if (Auth::user()->payment_methods == 1)
+                                {{ "クレジットカード" }}
+                            @endif
+                            @if (Auth::user()->payment_methods == 2)
+                                {{ "コンビニ" }}
+                            @endif
+                            @if (Auth::user()->payment_methods == 3)
+                                {{ "銀行振込" }}
+                            @endif
+                        </th>
                     </tr>
                 </table>
                 <a class="purchase-button" href="">購入する</a>

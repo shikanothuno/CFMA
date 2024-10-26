@@ -80,12 +80,18 @@ class User extends Authenticatable
         return $this->hasMany(Item::class, "purchase_user");
     }
 
+    public function payment_method()
+    {
+        return $this->belongsTo(PaymentMethod::class);
+    }
+
     public static function createGeneralUser($email, $password)
     {
         $user = User::create([
             "email" => $email,
             "password" => Hash::make($password),
             "is_admin" => false,
+            "payment_methods" => 1,
         ]);
 
         return $user;
@@ -97,6 +103,7 @@ class User extends Authenticatable
             "email" => $email,
             "password" => $password,
             "is_admin" => true,
+            "payment_methods" => 1,
         ]);
     }
 
@@ -119,6 +126,13 @@ class User extends Authenticatable
             $user->image_id = $image->id;
         }
         
+        $user->save();
+    }
+
+    public static function paymentMethodChange($user, $payment_method)
+    {
+        $user->payment_methods = $payment_method;
+
         $user->save();
     }
 }
