@@ -7,7 +7,7 @@
             <div class="item-detail-card">
                 <h2 class="item-name">{{ $item->item_name }}</h2>
                 <h4 class="item-brand-name">{{ $item->item_brand_name }}</h4>
-                <h3 class="item-price">{{ "￥" . number_format($item->item_price) . "(値段)"}}</h3>
+                <h3 class="item-price">{{ "￥" . number_format($item->item_price) . "(値段)" }}</h3>
                 <div class="favorite-and-comment">
                     <table>
                         <tr>
@@ -16,9 +16,9 @@
                             document.getElementById('toggle-favorite-form').submit()"><img class="icon" 
                             src="{{ asset("images/favorite.png") }}" alt=""></a></td>
                             <form id="toggle-favorite-form" method="POST" 
-                            action="{{ route('toggle.favorite',$item) }}"
+                            action="{{ route('toggle.favorite', $item) }}"
                             style="display: none;">@csrf</form>
-                            <td class="favorite-and-comment__td"><a href=""><img class="icon" 
+                            <td class="favorite-and-comment__td"><a href="{{ route("comment.view", $item) }}"><img class="icon" 
                             src="{{ asset("images/comment.png") }}" alt=""></a></td>
                         </tr>
                         <tr>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AddressUpdateController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ListingController;
@@ -48,6 +49,12 @@ Route::controller(ProfileSettingController::class)->middleware("auth")->group(fu
 Route::controller(ListingController::class)->middleware("auth")->group(function () {
     Route::get("/listing-item", "showListingView")->name("listing.item.view");
     Route::post("/listing-item/store", "storeListingItem")->name("listing.item.store");
+});
+
+Route::controller(CommentController::class)->middleware("auth")->group(function () {
+    Route::get("/{item}/comment","showCommentView")->name("comment.view");
+    Route::post("/{item}/comment","storeComment")->name("comment.store");
+
 });
 
 require __DIR__.'/auth.php';
