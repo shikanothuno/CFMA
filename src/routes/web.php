@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AddressUpdateController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ItemController;
@@ -69,6 +70,14 @@ Route::controller(PaymentMethodController::class)->middleware("auth")->group(fun
     Route::get("/{item}/payment-store", "paymentStore")->name("payment.store");
     Route::get("/{item}/payment-bank", "paymentBank")->name("payment.bank");
     Route::post("/{item}/payment-card", "paymentStripe")->name("payment.stripe");
+});
+
+Route::controller(AdminController::class)->middleware("auth")->group(function(){
+    Route::get("/admin-page","adminPageShow")->name("admin.page");
+    Route::delete("/admin-page/user-delete","deleteUser")->name("admin.user.delete");
+    Route::delete("/admin-page/comment-delete","deleteComment")->name("admin.comment.delete");
+    Route::post("admin-page/send-email","sendEmail")->name("admin.send.email");
+
 });
 
 require __DIR__.'/auth.php';
