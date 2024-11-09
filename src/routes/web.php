@@ -7,6 +7,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\PaymentMethodChangeController;
+use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfileSettingController;
 use Illuminate\Support\Facades\Route;
@@ -61,6 +62,13 @@ Route::controller(CommentController::class)->middleware("auth")->group(function 
 Route::controller(PaymentMethodChangeController::class)->middleware("auth")->group(function(){
     Route::get("/{user}/payment-method-change", "paymentMethodChange")->name("payment.method.change");
     Route::post("/{user}/payment-method-change", "paymentMethodChangeStore")->name("payment.method.store");
+});
+
+Route::controller(PaymentMethodController::class)->middleware("auth")->group(function(){
+    Route::get("/{item}/payment-card", "paymentCard")->name("payment.card");
+    Route::get("/{item}/payment-store", "paymentStore")->name("payment.store");
+    Route::get("/{item}/payment-bank", "paymentBank")->name("payment.bank");
+    Route::post("/{item}/payment-card", "paymentStripe")->name("payment.stripe");
 });
 
 require __DIR__.'/auth.php';

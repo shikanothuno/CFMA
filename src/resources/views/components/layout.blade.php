@@ -13,8 +13,10 @@
     </head>
     <body>
         <header class="header">
-            <img class="logo" src="{{ asset("/images/logo.svg") }}" alt="">
-            <form id="search-form" action="{{ route('items.list') }}">
+            <a href="{{ route('items.list') }}">
+                <img class="logo" src="{{ asset("/images/logo.svg") }}" alt="">
+            </a>
+                <form id="search-form" action="{{ route('items.list') }}">
                 <input class="search-input" name="keyword" type="text" onchange="document.getElementById('search-form').submit()" placeholder="何をお探しですか?">
             </form>
             @auth
