@@ -11,7 +11,7 @@ class StoreCommentRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,14 @@ class StoreCommentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "comment-body" => "required",
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            "comment-body.required" => "コメントは必ず記入してください。"
         ];
     }
 }

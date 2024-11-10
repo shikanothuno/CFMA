@@ -21,6 +21,6 @@ class CommentController extends Controller
         $comment_body = $request->input("comment-body");
         Comment::createComment($item->id, Auth::id(), $comment_body);
 
-        return redirect(route("comment.view"));
+        return redirect(route("comment.view", $item));
     }
 }

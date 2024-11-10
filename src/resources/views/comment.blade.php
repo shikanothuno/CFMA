@@ -49,7 +49,11 @@
                     <p class="comment-body">{{ $comment->pivot->comment_body }}</p>
                 @endforeach
                 <p class="comment-for-item">商品へのコメント</p>
-                <form class="comment-form" action="post">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+                <form class="comment-form" action="{{ route('comment.store', Auth::user()) }}" method="POST">
+                    @csrf
                     <textarea class="comment-area" name="comment-body" id="" cols="30" rows="10"></textarea>
                     <br>
                     <button class="submit-button" type="submit">コメントを送信する</button>
