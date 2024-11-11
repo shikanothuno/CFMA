@@ -41,10 +41,9 @@ class Image extends Model
             $extension = $image_file->extension();
 
             $file_name = date("Ymd_His") . "." . $extension;
-            $path = Storage::disk("s3")->putFileAs("images", $image_file, $file_name);
-            
-            
-            $url = Storage::disk("s3")->url($path);
+            $path = $image_file->storeAs("images",$file_name,"public");
+
+            $url = "storage/" . $path;
 
             $image = Image::createImage($path, $url);
 

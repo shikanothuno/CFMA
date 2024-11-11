@@ -2,7 +2,7 @@
     <main>
         <div class="container">
             <div class="item-img-card">
-                <img class="item-img" src="{{ $item->image->image_url }}" alt="">
+                <img class="item-img" src="{{ asset($item->image->image_url) }}" alt="">
             </div>
             <div class="item-detail-card">
                 <h2 class="item-name">{{ $item->item_name }}</h2>
