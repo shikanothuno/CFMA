@@ -30,6 +30,7 @@ class User extends Authenticatable
         "user_address",
         "user_building_name",
         "image_id",
+        "payment_methods",
     ];
 
     /**
@@ -112,7 +113,7 @@ class User extends Authenticatable
         $user->user_zip_code = $zip_code;
         $user->user_address = $address;
         $user->user_building_name = $building_name;
-        
+
         $user->save();
     }
 
@@ -120,12 +121,12 @@ class User extends Authenticatable
     {
         $user->updateUserAddress($user, $zip_code, $address, $building_name);
         $user->name = $user_name;
-        if(!is_null($image_file)){
+        if (!is_null($image_file)) {
             $image = Image::storeImage($image_file);
 
             $user->image_id = $image->id;
         }
-        
+
         $user->save();
     }
 

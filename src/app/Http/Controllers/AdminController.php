@@ -11,10 +11,10 @@ class AdminController extends Controller
 {
     public function adminPageShow()
     {
-        $users = User::where("is_admin",false)->get()->all();
+        $users = User::where("is_admin", false)->get()->all();
         $comments = Comment::all();
 
-        return view("admin-page",compact("users","comments"));
+        return view("admin-page", compact("users", "comments"));
     }
 
     public function deleteUser(Request $request)
@@ -41,11 +41,10 @@ class AdminController extends Controller
         $body = $request->input("body");
         $subject = $request->input("subject");
 
-        Mail::raw($body,function($message) use($to,$subject){
+        Mail::raw($body, function ($message) use ($to, $subject) {
             $message->to($to)->subject($subject);
         });
 
         return redirect(route("admin.page"));
-
     }
 }

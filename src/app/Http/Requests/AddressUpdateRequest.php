@@ -22,7 +22,7 @@ class AddressUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "zip-code" => ["string","regex:/^\d{3}-?\d{4}$/"],
+            "zip-code" => ["string", "regex:/^\d{3}-?\d{4}$/"],
             "address" => ["string"],
             "building-name" => ["string"],
         ];

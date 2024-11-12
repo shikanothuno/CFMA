@@ -45,16 +45,16 @@
                             @endif
                         </p>
                     </div>
-                    
+
                 </div>
                 @if (Auth::user()->payment_methods == 1)
-                <a class="purchase-button" href="{{ route("payment.card",$item) }}">購入する</a>
+                    <a class="purchase-button" href="{{ route('payment.card', $item) }}">購入する</a>
                 @endif
                 @if (Auth::user()->payment_methods == 2)
-                <a class="purchase-button" href="{{ route("payment.store",$item) }}">購入する</a>
+                    <a class="purchase-button" href="{{ route('payment.store', $item) }}">購入する</a>
                 @endif
                 @if (Auth::user()->payment_methods == 3)
-                <a class="purchase-button" href="{{ route("payment.bank",$item) }}">購入する</a>
+                    <a class="purchase-button" href="{{ route('payment.bank', $item) }}">購入する</a>
                 @endif
             </div>
 

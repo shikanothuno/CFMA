@@ -32,8 +32,16 @@ class ListingController extends Controller
 
         Log::debug($lisiting_user);
 
-        Item::storeItem($item_status, $item_name, $item_brand_name,
-        $item_description, $item_price, $image, [$category], $lisiting_user);
+        Item::storeItem(
+            $item_status,
+            $item_name,
+            $item_brand_name,
+            $item_description,
+            $item_price,
+            $image,
+            [$category],
+            $lisiting_user
+        );
 
         return redirect(route("items.list"));
     }

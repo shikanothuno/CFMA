@@ -34,14 +34,16 @@
             <label class="label" for="item-name">商品名</label>
             <input class="input" id="item-name" name="item-name" type="text" value="{{ old('item-name') }}">
             <label class="label" for="item-brand-name">ブランド名</label>
-            <input class="input" id="item-brand-name" name="item-brand-name" type="text" value="{{ old('item-brand-name') }}">
+            <input class="input" id="item-brand-name" name="item-brand-name" type="text"
+                value="{{ old('item-brand-name') }}">
             <label class="label" for="item-description">商品の説明</label>
-            <textarea class="textarea" name="item-description" id="item-description" cols="30" rows="5">{{ old("item-description") }}</textarea>
+            <textarea class="textarea" name="item-description" id="item-description" cols="30" rows="5">{{ old('item-description') }}</textarea>
 
             <h3 class="text-sales-price">販売価格</h3>
             <div class="bar"></div>
-            <label class="label" for="sales-price">販売価格</label>          
-            <input class="input input-price" id="sales-price" name="sales-price" type="text" value="{{ old('sales-price') }}">    
+            <label class="label" for="sales-price">販売価格</label>
+            <input class="input input-price" id="sales-price" name="sales-price" type="text"
+                value="{{ old('sales-price') }}">
 
             <button class="listing-button">出品する</button>
         </form>

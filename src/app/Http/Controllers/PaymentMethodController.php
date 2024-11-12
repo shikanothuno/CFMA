@@ -10,7 +10,7 @@ class PaymentMethodController extends Controller
 {
     public function paymentCard(Item $item)
     {
-        return view("payment-card",compact("item"));
+        return view("payment-card", compact("item"));
     }
 
     public function paymentStripe(Request $request, Item $item)
@@ -30,11 +30,11 @@ class PaymentMethodController extends Controller
 
     public function paymentStore(Item $item)
     {
-        return view("payment-store",compact("item"));
+        return view("payment-store", compact("item"));
     }
 
     public function paymentBank(Item $item)
     {
-        return view("payment-bank",compact("item"));
+        return view("payment-bank", compact("item"));
     }
 }

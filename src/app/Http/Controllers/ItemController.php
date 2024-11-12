@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Favorite;
 use App\Models\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
 {
@@ -11,26 +13,28 @@ class ItemController extends Controller
     {
         $query = Item::query();
         $keyword = $request->input("keyword");
-        if(!empty($keyword)){
-            $query->where("item_name","LIKE","%{$keyword}%")->orWhere("item_description","LIKE","%{$keyword}%");
+        if (!empty($keyword)) {
+            $query->where("item_name", "LIKE", "%{$keyword}%")->orWhere("item_description", "LIKE", "%{$keyword}%");
         }
         $items = $query->get()->all();
 
-        return view("item-list",compact("items"));
+        return view("item-list", compact("items"));
     }
 
     public function showMylist()
     {
-        return view("mylist");
+        $user = Auth::user();
+        $favorites = $user->favorites;
+        return view("mylist", compact("favorites"));
     }
 
     public function showItemDetail(Request $request, Item $item)
     {
-        return view("item-detail",compact("item"));
+        return view("item-detail", compact("item"));
     }
 
     public function showPurchaseItem(Request $request, Item $item)
     {
-        return view("item-purchase",compact("item"));
+        return view("item-purchase", compact("item"));
     }
 }

@@ -10,7 +10,7 @@ class Image extends Model
 {
     use HasFactory;
 
-    protected $fillable= [
+    protected $fillable = [
         "image_name",
         "image_url",
     ];
@@ -37,11 +37,11 @@ class Image extends Model
 
     public static function storeImage($image_file)
     {
-        if(!is_null($image_file)){
+        if (!is_null($image_file)) {
             $extension = $image_file->extension();
 
             $file_name = date("Ymd_His") . "." . $extension;
-            $path = $image_file->storeAs("images",$file_name,"public");
+            $path = $image_file->storeAs("images", $file_name, "public");
 
             $url = "storage/" . $path;
 
@@ -50,6 +50,5 @@ class Image extends Model
             return $image;
         }
         return null;
-            
     }
 }

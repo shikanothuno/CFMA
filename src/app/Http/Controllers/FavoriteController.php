@@ -13,12 +13,12 @@ class FavoriteController extends Controller
     {
         $user = User::find(Auth::id());
         $is_favorite = $user->favorites->contains($item->id);
-        if($is_favorite){
+        if ($is_favorite) {
             $item->favorites()->detach($user->id);
-        }else{
+        } else {
             $item->favorites()->attach($user->id);
         }
 
-        return redirect(route("item.detail",$item));
+        return redirect(route("item.detail", $item));
     }
 }

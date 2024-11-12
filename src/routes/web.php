@@ -17,15 +17,9 @@ Route::get('/', function () {
     Route::get("/","showItemList")->name("items.list");
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
 Route::controller(ItemController::class)->group(function(){
     Route::get("/","showItemList")->name("items.list");
-    Route::get("/mylist","showMylist")->name("items.mylist");
+    Route::get("/mylist","showMylist")->middleware("auth")->name("items.mylist");
     Route::get("/{item}/detail","showItemDetail")->name("item.detail");
     Route::get("/{item}/item-purchase","showPurchaseItem")->middleware("auth")->name("item.purchase");
 });
@@ -76,7 +70,7 @@ Route::controller(AdminController::class)->middleware("auth")->group(function(){
     Route::get("/admin-page","adminPageShow")->name("admin.page");
     Route::delete("/admin-page/user-delete","deleteUser")->name("admin.user.delete");
     Route::delete("/admin-page/comment-delete","deleteComment")->name("admin.comment.delete");
-    Route::post("admin-page/send-email","sendEmail")->name("admin.send.email");
+    Route::post("/admin-page/send-email","sendEmail")->name("admin.send.email");
 
 });
 

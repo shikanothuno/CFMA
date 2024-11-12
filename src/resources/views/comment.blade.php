@@ -15,8 +15,8 @@
                                     onclick="event.preventDefault();
                             document.getElementById('toggle-favorite-form').submit()"><img
                                         class="icon" src="{{ asset('images/favorite.png') }}" alt=""></a></td>
-                            <form id="toggle-favorite-form" method="POST" action="{{ route('toggle.favorite', $item) }}"
-                                style="display: none;">@csrf</form>
+                            <form id="toggle-favorite-form" method="POST"
+                                action="{{ route('toggle.favorite', $item) }}" style="display: none;">@csrf</form>
                             <td class="favorite-and-comment__td"><a href=""><img class="icon"
                                         src="{{ asset('images/comment.png') }}" alt=""></a></td>
                         </tr>
@@ -52,7 +52,7 @@
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
-                <form class="comment-form" action="{{ route('comment.store', Auth::user()) }}" method="POST">
+                <form class="comment-form" action="{{ route('comment.store', $item) }}" method="POST">
                     @csrf
                     <textarea class="comment-area" name="comment-body" id="" cols="30" rows="10"></textarea>
                     <br>

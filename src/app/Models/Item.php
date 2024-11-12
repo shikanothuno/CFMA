@@ -55,9 +55,16 @@ class Item extends Model
     }
 
 
-    public static function createItem($item_status_id, $item_name, $item_brand_name,
-    $item_description, $item_price, $image_id, $category_ids, $listing_user)
-    {
+    public static function createItem(
+        $item_status_id,
+        $item_name,
+        $item_brand_name,
+        $item_description,
+        $item_price,
+        $image_id,
+        $category_ids,
+        $listing_user
+    ) {
         $item = Item::create([
             "item_status_id" => $item_status_id,
             "item_name" => $item_name,
@@ -73,9 +80,16 @@ class Item extends Model
         return $item;
     }
 
-    public static function storeItem($item_status_id, $item_name, $item_brand_name,
-    $item_description, $item_price, $image_file, $category_ids, $listing_user)
-    {
+    public static function storeItem(
+        $item_status_id,
+        $item_name,
+        $item_brand_name,
+        $item_description,
+        $item_price,
+        $image_file,
+        $category_ids,
+        $listing_user
+    ) {
         $image = Image::storeImage($image_file);
         $item = Item::create([
             "item_status_id" => $item_status_id,
@@ -90,7 +104,6 @@ class Item extends Model
         $item->categories()->attach($category_ids);
 
         return $item;
-
     }
 
     public static function setPurchaseUser($item, $purchase_user)

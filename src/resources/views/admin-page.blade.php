@@ -4,9 +4,9 @@
             <h4>ユーザー削除</h4>
             <form action="{{ route('admin.user.delete') }}" method="post">
                 @csrf
-                @method("DELETE")
+                @method('DELETE')
                 <select name="delete-user" id="delete-user">
-                    <option value="" selected>{{ "--選択してください。--" }}</option>
+                    <option value="" selected>{{ '--選択してください。--' }}</option>
                     @foreach ($users as $user)
                         <option value="{{ $user->id }}">{{ $user->email }}</option>
                     @endforeach
@@ -18,11 +18,13 @@
             <h4>コメント削除</h4>
             <form action="{{ route('admin.comment.delete') }}" method="post">
                 @csrf
-                @method("DELETE")
+                @method('DELETE')
                 <select name="delete-comment" id="delete-comment">
-                    <option value="" selected>{{ "--選択してください。--" }}</option>
+                    <option value="" selected>{{ '--選択してください。--' }}</option>
                     @foreach ($comments as $comment)
-                        <option value="{{ $comment->id }}">{{ "User ID:" . strval($comment->user_id) . "/ Item ID:" . strval($comment->item_id) . "/ Body: . $comment->comment_body"}}</option>
+                        <option value="{{ $comment->id }}">
+                            {{ 'User ID:' . strval($comment->user_id) . '/ Item ID:' . strval($comment->item_id) . "/ Body: . $comment->comment_body" }}
+                        </option>
                     @endforeach
                 </select>
                 <br>
@@ -33,7 +35,7 @@
             <form action="{{ route('admin.send.email') }}" method="post">
                 @csrf
                 <select name="to" id="to">
-                    <option value="" selected>{{ "--選択してください。--" }}</option>
+                    <option value="" selected>{{ '--選択してください。--' }}</option>
                     @foreach ($users as $user)
                         <option value="{{ $user->email }}">{{ $user->email }}</option>
                     @endforeach
